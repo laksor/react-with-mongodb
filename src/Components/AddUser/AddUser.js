@@ -20,9 +20,8 @@ const AddUser = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        const newUser = [...users, data];
-        setUsers(newUser);
         console.log("Success:", data);
+        event.target.reset();
       })
       .catch((error) => {
         console.error("Error:", error);
