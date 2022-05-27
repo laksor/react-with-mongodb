@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import {  useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:5000/user")
       .then((res) => res.json())
@@ -24,6 +28,9 @@ const Home = () => {
         })
     }
   }
+  const updateUser = id =>{
+    navigate(`/update/${id}`);
+  }
   return (
     <div>
       <h1>Home</h1>
@@ -31,6 +38,7 @@ const Home = () => {
         {users.map((user) => (
           <p key={user._id}>
             name: {user.name}  email: {user.email}
+            <button onClick={() => updateUser(user._id)} style={{cursor:'pointer'}}>Update</button>
             <button onClick={() => userDelete(user._id)} style={{cursor:'pointer'}}>x</button>
           </p>
         ))}
