@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./AddUser.css";
 
 const AddUser = () => {
-  const [users, setUsers] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
